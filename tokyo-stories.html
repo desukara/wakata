@@ -17,6 +17,120 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Tokyo Stories page enhancements */
+      .chapters .grid.story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        align-items: start;
+      }
+
+      .story-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        border-radius: 24px;
+        padding: 1.2rem;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(244, 240, 234, 0.98) 100%
+        );
+        border: 1px solid rgba(60, 40, 20, 0.12);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+        color: #1f1a17;
+      }
+
+      .story-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          rgba(177, 39, 4, 0.95),
+          rgba(214, 146, 71, 0.95)
+        );
+      }
+
+      .story-card h3 {
+        margin: 0 0 0.35rem;
+        line-height: 1.2;
+        color: #23150f;
+        font-weight: 700;
+      }
+
+      .story-meta {
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #7a5a46;
+        margin-bottom: 0.9rem;
+        font-weight: 600;
+      }
+
+      .story-scroll {
+        position: relative;
+        overflow-y: auto;
+        max-height: min(62vh, 760px);
+        padding-right: 0.35rem;
+        padding-bottom: 1.25rem;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+      }
+
+      .story-scroll p {
+        margin: 0 0 1rem;
+        line-height: 1.75;
+        color: #2f2622;
+        font-size: 1rem;
+      }
+
+      .story-scroll p:last-of-type {
+        margin-bottom: 0;
+        color: #2f2622;
+      }
+
+      .story-scroll strong {
+        color: #1d120d;
+      }
+
+      @media (max-width: 1080px) {
+        .chapters .grid.story-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .story-card {
+          padding: 1rem;
+        }
+
+        .story-scroll {
+          max-height: 50vh;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .story-card {
+          border-radius: 20px;
+        }
+
+        .story-scroll {
+          max-height: 58vh;
+          padding-right: 0.15rem;
+        }
+
+        .story-scroll p {
+          font-size: 0.98rem;
+          line-height: 1.7;
+        }
+      }
+    </style>
   </head>
 
   <body data-page="tokyo-stories">
@@ -58,13 +172,13 @@
           <p class="tag" data-animate data-delay="0ms">Tokyo Stories</p>
 
           <h1 data-animate data-delay="100ms">
-            I figured I understood Tokyo.<br />
-            Tokyo had other ideas.
+            I thought I understood.<br />
+            Tokyo said, “Oh… you thought.”
           </h1>
 
           <p class="sub" data-animate data-delay="180ms">
-            Little mistakes. Quiet corrections. The kind nobody bothers to spell
-            out for you.
+            Little mistakes, quiet corrections, nobody explains it, they just
+            let you mess up and learn the hard way.
           </p>
 
           <div class="actions" data-animate data-delay="260ms">
@@ -79,145 +193,438 @@
       <section class="section intro" data-animate>
         <div class="container">
           <p class="tag">The start</p>
-          <h2>I thought I knew the basics.</h2>
-          <p>Be polite. Be quiet. Don’t act strange.</p>
-          <p>Simple.</p>
-          <p>I made it maybe 48 hours.</p>
-          <p>After that, it got very obvious: I was not adjusting.</p>
-          <p>I was taking part incorrectly.</p>
+          <h2>It Seemed So Easy.</h2>
+          <p>Don't break their rules.</p>
+          <p>I only lasted about 48 hours.</p>
+          <p>They were playing on expert.</p>
+          <p>I was still in the tutorial...</p>
+          <p>Welcome to Tokyo: Figure It Out.</p>
         </div>
       </section>
 
       <section class="section chapters" id="stories" data-animate>
         <div class="container">
           <p class="tag">The stories</p>
-          <h2>Nothing dramatic happened. That was the issue.</h2>
+          <h2>
+            Short Tokyo stories by Jimmy-san Simmons. Scroll down and get lost
+            in them.
+          </h2>
 
-          <div class="grid">
-            <article class="card" data-animate data-delay="0ms">
-              <h3>The Train</h3>
-              <p>First real test: the train.</p>
-              <p>Instant silence.</p>
-              <p>
-                Not regular silence. More like: did I miss some announcement?
-              </p>
-              <p>So I adjust. Lower my voice. Keep it respectful.</p>
-              <p>I’m thinking—yeah, I understand this.</p>
-              <p>I do not understand this.</p>
-              <p>
-                Because in Tokyo, if you’re adjusting your volume, you’re
-                already off.
-              </p>
-              <p>The move is not speak more quietly.</p>
-              <p>The move is don’t speak.</p>
-              <p>At all.</p>
-              <p>
-                Which would’ve been nice information maybe ten seconds earlier.
-              </p>
-              <p>I say one sentence.</p>
-              <p>A normal sentence. Nothing outrageous.</p>
-              <p>Somehow, I’m the loudest thing happening on the train.</p>
-              <p>Nobody looks. Nobody responds.</p>
-              <p>Which is worse.</p>
-              <p>
-                Because now I’m the only person there who has no idea what’s
-                going on.
-              </p>
-              <p>Fully grown. Talking. On a Tokyo train.</p>
-              <p>Amazing.</p>
+          <div class="grid story-grid">
+            <article class="card story-card" data-animate data-delay="0ms">
+              <h3>The Telepathy Train</h3>
+              <p class="story-meta">Tokyo Story · 5 min read</p>
+              <div
+                class="story-scroll"
+                aria-label="The Telepathy Train story text"
+              >
+                <p>
+                  Nothing in life can really prepare you for the total silence
+                  in Japan. I’m talking about the ultimate quiet game. Not
+                  library tone or even that “hey, can you lower your voice
+                  please?” quiet. Not even close. This is organized silence on a
+                  national level. Japanese train rides make you feel like you
+                  walked into a board meeting you were never invited to, and
+                  everybody had already agreed, “We’re simply not talking at all
+                  today.” And I’m standing there wondering… when was the group
+                  chat? Why didn’t I get the message? When did Tokyo decide
+                  we’re going full pin drop?
+                </p>
+                <p>
+                  I step on the train and the doors close, very quietly. Right
+                  away it’s extremely obvious… nobody’s talking. No coughing or
+                  little throat clearing noises… not even a silent fart. I’m
+                  looking around sure that there must be a valid reason for
+                  this, maybe some sort of sign, something in English… did I
+                  miss a clue? You know they say a lot over those announcement
+                  speakers in Japanese… so I’m wondering, did that translate to
+                  “please remain silent until further notice”?
+                </p>
+                <p>
+                  But what really throws me off is how comfortable everybody
+                  seems to be. Nobody seems tense or worried, and no one is
+                  signaling that anything is wrong. Nothing even happened to
+                  justify this level of silence. And nobody thinks it’s strange
+                  at all. This is just… normal. Silence is apparently part of
+                  the transportation system that comes with the ticket.
+                </p>
+                <p>
+                  So I adjust as I think to myself, no problem, I can respect
+                  this. Cultural awareness and samurai level discipline. I’ll
+                  just adapt to the environment. So I’m looking out the window,
+                  watching Tokyo glide by, modern skyscrapers and neon signs,
+                  everything moving so silently it feels like a Charlie Chaplin
+                  movie without subtitles. And I lean over a little, very
+                  quietly, whispering to my wife, right in her ear… “yeah… we
+                  should probably get Burger King later… maybe McDonald’s…” I
+                  even feel good about being so culturally aware. I’m being
+                  respectful and appreciating another way of life.
+                </p>
+                <p>
+                  But I didn’t understand the point of this quiet game. I really
+                  didn’t. So I whisper again, I laugh… and then I get that
+                  strange feeling. You know that feeling you get when you
+                  realize… somebody is watching you?
+                </p>
+                <p>
+                  I look up, and there’s this old man just staring right at me.
+                  Not a casual glance either. I’m talking about the death stare.
+                  Ice cold and not shy about it. I deliberately broke a social
+                  rule nobody needed to explain because everybody already knows
+                  it. And now I’m thinking what’s the big deal, I’m whispering,
+                  what’s this guy’s problem? But here’s what I didn’t know… if
+                  you’re whispering, you’re already too loud. The rule isn’t
+                  “try to keep it down.” The rule is… “don’t make any sound at
+                  all. Silence is golden and that’s the standard.”
+                </p>
+                <p>
+                  So at this point, I’m feeling like… alright Tokyo. We’re done
+                  adapting.
+                </p>
+                <p>
+                  I make eye contact with the old man across the train… and I
+                  say one sentence.
+                </p>
+                <p>“Hey, we’ll switch to telepathy.”</p>
+                <p>
+                  Just one sentence of completely normal communication. Maybe a
+                  little more enthusiastically than I had intended.
+                </p>
+                <p>And somehow… I become the problem.</p>
+                <p>
+                  Not a small one either. The whole train reacts to this. People
+                  look up from their phones like, “what was that?” Somebody else
+                  starts talking… in Japanese. Then another person comes back to
+                  life. Then a couple more. Still quiet, but now there’s sound
+                  and life. Progress in it’s early stages. I triggered something
+                  and it turned into a domino effect. Suddenly speech was
+                  spreading out all over the train.
+                </p>
+                <p>
+                  And the strangest part? Nobody actually looks at me during any
+                  of this. Except the old man. He stays mad the entire ride and
+                  keeps glancing at me in disapproval. When we reached his
+                  station he gets gets off the train, shaking his head. Then he
+                  stops and turns back, looks at me through the window, and
+                  gives me one last look of shame.
+                </p>
+                <p>…I wave goodbye to him.</p>
+                <p>That’s how you know you’re in a different world.</p>
+                <p>
+                  Because where I’m from, somebody would have at least laughed
+                  or, at the worst, said something sarcastic. There would be
+                  some kind of verbal response. Here? Nothing but silence and
+                  quiet judgment. And that’s worse. Because now I’m standing
+                  there with my wife, clearly not blending in, talking… with
+                  absolutely no feedback from anyone.
+                </p>
+                <p>
+                  And now she’s getting the look because she’s supposed to know
+                  better. I can get away with it, as an outsider. But her? No.
+                  She’s got no excuse. Now she’s looking at me with scorn in her
+                  eyes.
+                </p>
+                <p>
+                  But then something interesting happens on the train. People
+                  start talking more. At first it’s just the kids, then even the
+                  adults start chatting with each other. Because once the old
+                  man got off the train, the pressure left with him and everyone
+                  relaxed a little. Conversations start popping up, and
+                  eventually nobody’s holding back.
+                </p>
+                <p>
+                  So I’m standing there pondering… did I just override the
+                  system?
+                </p>
+                <p>I believe I unlocked speech on a muted train.</p>
+                <p>
+                  Now I’m really wondering… what else is possible? Do I stop
+                  here? Do I eat rice with a fork or walk inside with my shoes
+                  on? No… that feels like way too much, even for me.
+                </p>
+                <p>But it really makes you think.</p>
+                <p>I guess I never realized silence could be so loud.</p>
+                <p>
+                  Because on a Tokyo train… one quiet sentence… suddenly feels
+                  like surround sound.
+                </p>
+              </div>
             </article>
 
-            <article class="card" data-animate data-delay="100ms">
-              <h3>The Escalator</h3>
-              <p>Next lesson: escalators.</p>
-              <p>Easy. Stand. Ride. Mind your own business.</p>
-              <p>I can do that.</p>
-              <p>I step on. Stand on the left.</p>
-              <p>Feels correct. Comfortable. Confident.</p>
-              <p>This is me now. Tokyo guy.</p>
-              <p>And then nothing happens.</p>
-              <p>That’s the issue.</p>
-              <p>Because behind me, there’s a line.</p>
-              <p>Not moving.</p>
-              <p>Not complaining.</p>
-              <p>They just accept that I have decided to stop progress.</p>
-              <p>And I don’t notice.</p>
-              <p>I’m up there relaxed, enjoying the ride.</p>
-              <p>
-                Meanwhile I have created a quiet traffic jam with my entire
-                body.
-              </p>
-              <p>Nobody says anything.</p>
-              <p>Of course they don’t.</p>
-              <p>They let you discover your mistake like an adult.</p>
-              <p>Slowly. Internally. Completely against your will.</p>
+            <article class="card story-card" data-animate data-delay="100ms">
+              <h3>The Cat Crosswalk</h3>
+              <p class="story-meta">Tokyo Story · 5 min read</p>
+              <div
+                class="story-scroll"
+                aria-label="The Cat Crosswalk story text"
+              >
+                <p>
+                  Walking to 7-11 in Tokyo feels like stepping into a perfectly
+                  organized system where everyone already understands the rules…
+                  except you. People move in step, everything’s coordinated, and
+                  it all looks completely rehearsed. I can walk too. I’ve been
+                  doing that my whole life. This should not be that complicated…
+                  or so I thought. I stop for one second to check Google Maps,
+                  just one small second, and wham…suddenly I’m in the way. No
+                  one bumps into me or complains. They simply adjust to the
+                  situation. And that’s what makes it uncomfortable, because it
+                  becomes crystal clear this isn’t random. There’s a steady
+                  rhythm here, and I’m not part of it. Tokyo is marching to a
+                  drum beat that I can’t hear, and I stepped out of it for a
+                  second. That’s all it took. One second, and I went from being
+                  a person walking to being a big obstacle that needs to be
+                  avoided. Nobody says anything at all, but you can see the flow
+                  moving around you in a single file line, and at the same time
+                  you start to admire how precise it all is. Then you step aside
+                  and wait for the chance to jump back in.
+                </p>
+                <p>
+                  Now I am paying careful attention. Everyone is on the left
+                  side, moving in a geometrically perfect line, not drifting or
+                  sloppy, and without hesitation. It’s not fast but it’s very
+                  exact. So I try to match the pace. Stay on the left side, keep
+                  a steady pace, leave some space between you and the person in
+                  front of you, and don’t get in the way. Finally, I get in
+                  where I fit in, and it actually starts to feel kind of
+                  manageable. Then an orange and white cat comes out of a side
+                  street and walks right in front of me. There wasn’t any
+                  hesitation or awareness of anything around it, it just merged
+                  into the line. And I think, well, now everything is going to
+                  get crazy. It’s a wild cat walking around a society obsessed
+                  with social discipline.
+                </p>
+                <p>
+                  But nothing disorderly happens. The cat joins the line of
+                  pedestrians and I’m the only one who was surprised by any of
+                  this. It stays on the left side, moving carefully in the same
+                  direction, keeps the same pace, the same social distance. So,
+                  I find myself walking behind a cat as if this is a completely
+                  normal part of the system. And it is!
+                </p>
+                <p>
+                  At that point, I’m trying to understand what I am seeing,
+                  because this is not how cats should behave. They don’t follow
+                  human social structures. Cats don’t acknowledge rules. This
+                  cat looks like it has somewhere to be. It has purpose. So I
+                  watch it closer, because I already know no one back home would
+                  ever believe this unless I make a video and post it on FB. We
+                  arrive at a crosswalk. It’s early in the morning, around six
+                  o’clock, middle of the week. There are no cars at all, so the
+                  street is completely empty.
+                </p>
+                <p>Yet everyone stops.</p>
+                <p>The cat stops too!</p>
+                <p>
+                  And this is where it becomes difficult to process. The cat is
+                  standing almost at the line, leaving proper space, waiting
+                  with everyone else. As if that wasn’t enough… no one reacts to
+                  this, not even slightly. No one wants to bother the cat or
+                  insult it’s dignity by singling it out. It’s treated as
+                  entirely normal, as though this cat is just another
+                  participant in the Japanese system. And I completely
+                  understand people following rules, that makes sense. But a cat
+                  following rules raises some serious questions.
+                </p>
+                <p>Because there are no cars… at all.</p>
+                <p>
+                  Where I’m from, that situation has a different much outcome.
+                  In America, a crosswalk is more of a guideline than a
+                  requirement. If there are no cars, you just cross the street.
+                  If a police officer happens to notice, you might acknowledge
+                  them, and that’s usually more than enough. The expectation is
+                  really simple. You check both directions and then you go.
+                  There is no reason to wait if there is no danger. Especially
+                  if there are no cars on the road at all.
+                </p>
+                <p>But here in Japan, no one moves without permission.</p>
+                <p>Not one single person… or cat.</p>
+                <p>
+                  Everyone stands there ever-so calmly, as if time itself is
+                  paused until the signal changes from red to green. The rule
+                  was settled and Tokyo is ruled by the rules. And so, I’m
+                  looking at this tiger-striped cat, trying to understand why
+                  it’s participating in something it doesn’t even need to
+                  follow. It has no legal obligations or consequences to face.
+                  It’s entirely free to leave at any moment and walk or climb
+                  anywhere.
+                </p>
+                <p>
+                  And yet, it waits at the crosswalk until the light says “go
+                  ahead.”
+                </p>
+                <p>
+                  Eventually, the light does turn green. Everyone starts walking
+                  again, and the cat walks right along with them, keeping it’s
+                  position. I’m still behind it the cat, following like an
+                  undercover cop, walking through the crosswalk in the same
+                  rule-following manner.
+                </p>
+                <p>
+                  And at that point, I’m no longer thinking about the Tokyo.
+                  It’s the comparison that stays on my mind. Japan is so very
+                  different.
+                </p>
+                <p>
+                  I stopped for one second and disrupted everything. This law
+                  abiding cat entered the system, followed every rule, and made
+                  no mistakes at all.
+                </p>
+                <p>I’m just trying to understand how things work.</p>
+                <p>But even the cat is better at this than me.</p>
+              </div>
             </article>
 
-            <article class="card" data-animate data-delay="200ms">
-              <h3>The Convenience Store</h3>
-              <p>Convenience store.</p>
-              <p>Easy.</p>
-              <p>I’ve done this before.</p>
-              <p>Grab. Pay. Leave.</p>
-              <p>I get to the counter.</p>
-              <p>The cashier is moving fast. Clean. No wasted motion.</p>
-              <p>I respect that.</p>
-              <p>So I jump in—thank you.</p>
-              <p>Early.</p>
-              <p>Too early.</p>
-              <p>Now I’m ahead of the moment.</p>
-              <p>Which is not where you want to be.</p>
-              <p>I say it again.</p>
-              <p>Trying to recover.</p>
-              <p>That makes it worse.</p>
-              <p>Now I’m doing too much.</p>
-              <p>Meanwhile the cashier hasn’t changed at all.</p>
-              <p>Still smooth. Still precise.</p>
-              <p>Like I’m not even required.</p>
-              <p>Which... may actually be right.</p>
-            </article>
-
-            <article class="card" data-animate data-delay="300ms">
-              <h3>The Sidewalk</h3>
-              <p>Walking in Tokyo looks normal.</p>
-              <p>People moving. I can do that.</p>
-              <p>I slow down for one second to check my phone.</p>
-              <p>That’s it. One second.</p>
-              <p>And suddenly—I’m in the way.</p>
-              <p>Completely.</p>
-              <p>Like I placed myself there on purpose.</p>
-              <p>People adjust.</p>
-              <p>Not dramatically. Just enough.</p>
-              <p>Which tells you everything.</p>
-              <p>Because now it’s like—oh.</p>
-              <p>This isn’t random.</p>
-              <p>There’s a rhythm.</p>
-              <p>And I stepped out of it.</p>
-              <p>For one second.</p>
-              <p>That’s all it takes.</p>
-            </article>
-
-            <article class="card" data-animate data-delay="400ms">
-              <h3>The Restaurant</h3>
-              <p>Restaurant.</p>
-              <p>Sit down. Menu. Easy.</p>
-              <p>I’m ready this time.</p>
-              <p>Watching. Waiting. Learning.</p>
-              <p>The server comes over.</p>
-              <p>I order clean. Confident.</p>
-              <p>This is better. I can feel it.</p>
-              <p>Small pause.</p>
-              <p>Something’s off.</p>
-              <p>Not big. Just slightly wrong.</p>
-              <p>And that’s worse.</p>
-              <p>Because now I don’t know what it is.</p>
-              <p>Too early? Too direct? Not enough? Too much?</p>
-              <p>Everything felt right.</p>
-              <p>Which is usually the problem.</p>
-              <p>The food comes. Everything is smooth.</p>
-              <p>
-                And I’m sitting there like—yeah... I’m still missing something.
-              </p>
+            <article class="card story-card" data-animate data-delay="200ms">
+              <h3>Hot Sauce Apologies: They Put Sorry on Everything</h3>
+              <p class="story-meta">Tokyo Story · 6 min read</p>
+              <div
+                class="story-scroll"
+                aria-label="Hot Sauce Apologies: They Put Sorry on Everything story text"
+              >
+                <p>
+                  Listen… have you ever gone somewhere and realized… people are
+                  apologizing profusely… I mean, everywhere and all the time?
+                  Because this one caught me completely off guard. I’m just a
+                  regular American man, okay? I moved to Tokyo to be with my
+                  wonderful Japanese wife, thinking I understood how this world
+                  works. You see, in my hometown, apologies are not handed out
+                  lightly. You don’t just throw “I’m sorry” around like free
+                  samples at Costco. Not at all. An apology back in America is a
+                  serious milestone. Something had to go wrong before you get to
+                  that point. There’s a whole story, maybe eye-witnesses are
+                  involved. Because somebody did something blame-worthy, then
+                  felt something, and then stepped forward to take
+                  accountability for their actions. That’s what “I’m sorry”
+                  means to Americans. It carries a lot of weight. It’s not a
+                  causal “excuse me.” It’s a lot closer to repentance than
+                  politeness. So imagine my confusion when I get to Tokyo and
+                  people are apologizing… constantly. Not because something even
+                  happened or because somebody messed up. Just… off gp. General
+                  principle. Sorry in Tokyo is built into conversation like
+                  punctuation marks.
+                </p>
+                <p>
+                  I’m walking down the street, minding my own business, and
+                  somebody passes me with more than enough room to move around
+                  me comfortably in the same hardware store aisle, “sumimasen.”
+                  That means sorry. And I’m thinking… sorry for what? You didn’t
+                  push me or even disturb my personal space. And then it keeps
+                  casually happening more often. At train stations, walking on
+                  sidewalks, in grocery stores. I go into an Ito Yokado, reach
+                  for some rice, and I try it myself, “sumimasen.” And it so
+                  feels… nice and smooth. As if I just tapped into some social
+                  operating system I didn’t know was there all along. Then
+                  somebody walks past me, “sumimasen.” I say it back,
+                  “sumimasen.” Now we’re both apologizing for being there in the
+                  same square footage. And nobody did anything wrong at all. At
+                  that point, I’m just realizing, hold on… what are we even
+                  apologizing for anymore? We’re just in it now because this is
+                  an apology loop.
+                </p>
+                <p>
+                  See, back home, if you apologize too much, people start
+                  getting suspicious real quick. You say “sorry” three times in
+                  a row, somebody’s going to stop you and ask, “Hey… what did
+                  you do?” Now you’re under investigation, and you didn’t even
+                  commit a crime. And in the USA, there’s this unspoken rule… if
+                  you apologize too much, you look soft. Nobody wants to be
+                  known as a people-pleaser because they fold under pressure. So
+                  we don’t use “I’m sorry” lightly. We might say “my bad,” sure,
+                  that’s used casually, but even that doesn’t mean repentance.
+                  That’s just a quick acknowledgment, and it’s the closest thing
+                  to the vague Japanese apology we’re referring to here. But
+                  “I’m sorry”? That’s a lot heavier and closer to “I repent”
+                  than “excuse me.” But in Japan, they use apologies like hot
+                  sauce and put it on everything.
+                </p>
+                <p>
+                  And the crazy part about it is, nobody looks or sounds guilty.
+                  There’s not any tension in it because it’s smooth, almost like
+                  breathing. And that’s when it finally clicked, and I
+                  understood this isn’t about guilt. It’s about saying, “I see
+                  you, recognize that I exist in your space, and I don’t want to
+                  disturb your peace.” Think of it as preventive maintenance or
+                  emotional insurance. Outside Japan, we wait until something
+                  goes wrong and then deal with it before it gets out of hand,
+                  sometimes not politely. But here in Tokyo, they handle
+                  problems before they become situations. They even smooth the
+                  moment before it has a chance to resemble a situation, wrapped
+                  up with deep bows and polite tones.
+                </p>
+                <p>
+                  Then I find out for myself… this isn’t just one apology level.
+                  There's a whole lot more to this Japanese apology system. I
+                  didn’t know that at first. I thought sorry was just sorry,
+                  point blank. If you’re thinking, “Oh, sumimasen is just how
+                  Japanese people say excuse me”… you’re not exactly wrong, but
+                  it’s much deeper than that…because sumisamen is more like the
+                  pre-apology. Fasten your seatbelt because we’re picking up the
+                  pace now. They have different levels of apologies with their
+                  own procedural mini systems attached. You’ve got the light
+                  one, “sumimasen,” that’s the pre-apology, and it’s more like
+                  excuse me, sliding past somebody lingo. Then you’ve got “gomen
+                  nasai,” okay, now you actually did something that needs to be
+                  addressed before a situation developes. You’re late for an
+                  appointment, you forgot it was your turn to bring coffee, you
+                  inconvenienced somebody at the mall. Then it escalates,
+                  “moushiwake arimasen.” Now you’re in professional territory of
+                  apologies. That’s workplace accountability, and we need to
+                  talk about this one before HR gets involved. It's like…
+                  customer service voice activated. Then you go a little bit
+                  deeper, “taihen moushiwake gozaimasen.” This time, you’re
+                  saying something profound and you need to take it seriously.
+                  You’re bowing with sincere intention of humbling yourself in
+                  front of the person you did dirty. And now, ladies and
+                  gentlemen, comes the final level, known as the public apology.
+                  This one is the long bow, the repeated statements of ultimate
+                  regret, when the whole company’s standing there looking at you
+                  like, “We have reflected on this and have learned a valuable
+                  lesson, we will do much better moving forward,” or someone’s
+                  getting fired. And I’m really amazed by all this since… y’all
+                  got apology choreography, Tokyo! This was all carefully
+                  structured by somebody with a lot of forethought and
+                  psychology skills.
+                </p>
+                <p>
+                  But here’s what really made me slap myself, it works every
+                  time. There’s no steady buildup of tension or lingering
+                  resentment over the years. No small thing turning into a big
+                  thing and everybody wondering who pushed the red button.
+                  Everything just flows because everybody has already accounted
+                  for the possibility of inconvenience. In the good old US of A,
+                  somebody steps on your new shoes, it’s a moment. You’ve got
+                  choices, America. You can choose to just ignore it, react on
+                  the spot, escalate without thinking, or learn from the
+                  Japanese. Out here in Japan? Those special moments dissolve
+                  instantly like Tang. The little problem never becomes a
+                  situation in the first place. And I’m living with the
+                  realization now, if everybody’s apologizing and nobody’s doing
+                  anything wrong… nothing even gets to the problem level, and it
+                  definitely never hits the situation level. There’s checks and
+                  balances all along the way. In Tokyo, everything feels
+                  smoother, and nobody’s offended. But even if they are
+                  offended, they at least have procedures set in place to
+                  prevent escalations. You can be mad if you want, but so and so
+                  said the right apology and bowed at the right angle. Life goes
+                  on.
+                </p>
+                <p>
+                  And I had to re inventory my own apology process, because I
+                  came from a place where apologies felt like being soft. It
+                  meant giving something up you had to earn, which some refer to
+                  as street credit. But in Samurai Land, it’s not surrender at
+                  all. The apologies are another part of how this society stays
+                  in harmony. It’s the same harmony as standing quietly on the
+                  train, walking on the correct side, waiting at the crosswalk
+                  even when no cars are coming. This whole Japanese social
+                  ecosystem is all inter-connected with rules from the ancient
+                  ninja days. And somewhere along the path in my adventures
+                  through Tokyo, without even realizing it, I stopped refusing
+                  to apologize and fighting everything and started apologizing
+                  to stay synchronized. And once I understood apologies on a
+                  higher level, there was nothing left to fight about.
+                </p>
+              </div>
             </article>
           </div>
         </div>
@@ -226,20 +633,27 @@
       <section class="section philosophy" data-animate>
         <div class="container">
           <p class="tag">The adjustment</p>
-          <h2>It’s not one mistake.</h2>
-          <p>It’s every one of them.</p>
-          <p>Small things. Quiet things. Things nobody explains.</p>
-          <p>You just feel it when you get them wrong.</p>
-          <p>Usually a few seconds after the fact.</p>
+          <h2>It’s not just one mistake.</h2>
+          <p>It’s all of them.</p>
+          <p>Little, quiet stuff nobody wants to tell you.</p>
+          <p>You just feel it—oh. That wasn’t it...</p>
+          <p>And it hits you right after, when it’s already too late.</p>
         </div>
       </section>
 
       <section class="section closing" data-animate>
         <div class="container">
           <p class="tag">What happens next</p>
-          <h2>There is a system here.</h2>
-          <p>You’re already inside it.</p>
-          <p>You just can’t see it yet.</p>
+          <h2>There’s a system here.</h2>
+          <p>You’re already in it.</p>
+          <p>
+            You start off thinking nothing’s happening… that’s when it’s working
+            right.
+          </p>
+          <p>
+            Tokyo moves like ninjas—you don’t even know you're in a system until
+            you're a part of it.
+          </p>
 
           <div class="actions">
             <a href="tokyo-culture.html" class="btn primary"
